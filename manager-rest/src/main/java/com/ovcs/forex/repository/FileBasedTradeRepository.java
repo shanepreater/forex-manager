@@ -68,8 +68,7 @@ public class FileBasedTradeRepository implements TradeRepository {
     @Override
     public List<Trade> findAll() {
         try {
-            return Files.walk(configuration.getFileStoreDirectoryPath())
-                    .filter(path -> path.endsWith(".json"))
+            return Files.list(configuration.getFileStoreDirectoryPath())
                     .map(this::load)
                     .collect(Collectors.toList());
         } catch (IOException e) {
@@ -80,8 +79,7 @@ public class FileBasedTradeRepository implements TradeRepository {
     @Override
     public List<Trade> findAllClosed() {
         try {
-            return Files.walk(configuration.getFileStoreDirectoryPath())
-                    .filter(path -> path.endsWith(".json"))
+            return Files.list(configuration.getFileStoreDirectoryPath())
                     .map(this::load)
                     .filter(Trade::isClosed)
                     .collect(Collectors.toList());
@@ -93,8 +91,7 @@ public class FileBasedTradeRepository implements TradeRepository {
     @Override
     public List<Trade> findAllClosedBetween(Instant from, Instant until) {
         try {
-            return Files.walk(configuration.getFileStoreDirectoryPath())
-                    .filter(path -> path.endsWith(".json"))
+            return Files.list(configuration.getFileStoreDirectoryPath())
                     .map(this::load)
                     .filter(trade -> trade.isClosed() && trade.getClosed().isBefore(until) && trade.getClosed().isAfter(from))
                     .collect(Collectors.toList());

@@ -1,5 +1,6 @@
 package com.ovcs.forex;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -26,6 +27,7 @@ public class Trade {
     private double grossProfit;
     private double swap;
 
+    @JsonIgnore
     public double getNetProfit() {
         if(grossProfit >= 0) {
             return grossProfit - swap;
@@ -33,14 +35,17 @@ public class Trade {
         return grossProfit;
     }
 
+    @JsonIgnore
     public boolean isWinner() {
         return grossProfit > 0;
     }
 
+    @JsonIgnore
     public boolean isClosed() {
         return closed != null;
     }
 
+    @JsonIgnore
     public double getRiskPips() {
         if(initialStopLoss > openingPrice) {
             return (initialStopLoss - openingPrice) * pair.getPipMultiplier();
@@ -48,6 +53,7 @@ public class Trade {
         return (openingPrice - initialStopLoss) * pair.getPipMultiplier();
     }
 
+    @JsonIgnore
     public double getRewardPips() {
         if(closingPrice > openingPrice) {
             return (closingPrice - openingPrice) * pair.getPipMultiplier();
