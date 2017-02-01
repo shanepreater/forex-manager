@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/forex-manager.iml" filepath="$PROJECT_DIR$/.idea/forex-manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/manager-rest.iml" filepath="$PROJECT_DIR$/.idea/modules/manager-rest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/manager-rest_main.iml" filepath="$PROJECT_DIR$/.idea/modules/manager-rest_main.iml" group="manager-rest" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/manager-rest_test.iml" filepath="$PROJECT_DIR$/.idea/modules/manager-rest_test.iml" group="manager-rest" />
+    </modules>
+  </component>
+</project>
